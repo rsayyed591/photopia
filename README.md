@@ -39,6 +39,7 @@ Photopia/
 │   ├── index.js                       # Entry point for the backend
 │   ├── package.json                   # Backend dependencies and scripts
 │   └── .env                           # Environment variables for the backend
+│   └── database_setup.sql             # SQL Queries for the Database  
 │
 ├── user-frontend/                     # Frontend code
 │   ├── src/                           # React source code
@@ -61,9 +62,45 @@ Photopia/
 
 ---
 
-## Setup  
+## Setup
 
 Follow these steps to run the project locally:
+
+## Database Setup  
+
+To set up the database for the project, you can run the provided SQL script. This will create the necessary tables (`users` and `user_files`) for the application.
+
+1. Download the [**database_setup.sql**](./user-backend/database_setup.sql) file from the repository.
+2. Connect to your MySQL database.
+3. Run the following commands in your MySQL client:
+
+```sql
+-- Create the database
+CREATE DATABASE user_auth_system;
+
+-- Use the database
+USE user_auth_system;
+
+-- Create the users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create the user_files table
+CREATE TABLE user_files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    file_path VARCHAR(255) NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+```
+
+4. After running the above SQL commands, your database schema will be set up and ready to use with the application.
 
 ### Backend  
 
@@ -157,15 +194,16 @@ Follow these steps to run the project locally:
 
 ### Login Page  
 Minimalistic and user-friendly login page.  
-![Login Page](https://i.ibb.co/Zm3JTyJ/Screenshot-2024-11-26-215451.png)
+![Login Page](https://i.ibb.co/R4fpJXw/image.png)
 
 ### Register Page  
 Easy registration form to create a new account.  
-![Register Page](https://i.ibb.co/Zm3JTyJ/Screenshot-2024-11-26-215451.png)
+![Register Page](https://i.ibb.co/SyhDjsC/image.png)
 
 ### Home Page  
 A minimalistic UI to upload, store, and manage your photos.  
-![Home Page](https://i.ibb.co/Zm3JTyJ/Screenshot-2024-11-26-215451.png)
+![Home Page 1](https://i.ibb.co/1TXbykt/image.png)
+![Home Page 2](https://i.ibb.co/x8GWZkq/image.png)
 
 ---
 
