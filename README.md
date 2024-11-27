@@ -219,7 +219,7 @@ The application is hosted on Vercel (Frontend). However, the backend is not host
 - **Email:** `admin@gmail.com`  
 - **Password:** `1234`  
 
-You can view the application [here](https://photopia-one.vercel.app/login).  
+You can view the application [here](https://photopia-one.vercel.app/).  
 
 ---
 
