@@ -7,23 +7,24 @@ import Register from './pages/Register';
 import Footer from './components/Footer';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Default to dark mode if not set in localStorage
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode === null ? true : savedMode === 'true';
+  });
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDarkMode);
-  }, []);
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', newDarkMode);
+    setDarkMode((prevMode) => !prevMode);
   };
 
   const PrivateRoute = ({ children }) => {
     const isAuthenticated = !!localStorage.getItem('token');
     return isAuthenticated ? children : <Navigate to="/login" />;
-  };  
+  };
 
   return (
     <Router>

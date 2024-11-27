@@ -174,7 +174,12 @@ CREATE TABLE user_files (
 2. Start the frontend server (refer to Setup > Frontend).  
 3. Open [http://localhost:5173](http://localhost:5173) in your browser to access the app.  
 
----
+### Default Credentials for Offline Use  
+For testing, offline usage, you can use the following credentials:  
+- **Email:** `admin@gmail.com`  
+- **Password:** `1234`  
+
+--- 
 
 ## API Endpoints  
 
@@ -207,9 +212,14 @@ A minimalistic UI to upload, store, and manage your photos.
 
 ---
 
-## Host
+## Host  
 
-The application is hosted on Vercel (Frontend) and a custom backend server. You can view it [here](https://photopia.vercel.app/).
+The application is hosted on Vercel (Frontend). However, the backend is not hosted. To access the application, use the following default credentials:  
+
+- **Email:** `admin@gmail.com`  
+- **Password:** `1234`  
+
+You can view the application [here](https://photopia-one.vercel.app/login).  
 
 ---
 
@@ -239,3 +249,9 @@ For any questions or issues, please reach out to:
 - **GitHub:** [Rehan Sayyed](https://github.com/rsayyed591)
 
 ---
+
+Here's the updated note to include the credentials for offline use:  
+
+
+
+Including this section ensures users can quickly get started without setting up additional user accounts. Let me know if you need further edits!
