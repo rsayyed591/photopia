@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+uploads/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment variables
+.env
+
+# Temporary files
+*.env
+*.DS_Store
+
+# Vite build files (if applicable)
+dist/
+
+# npm package lock file (optional, for some projects)
+package-lock.json
+
+# Coverage directory (if using a testing framework like Jest)
+coverage/
+
+# .vscode folder (if using VS Code)
+.vscode/
+
+# Operating system specific files (Windows, macOS)
+Thumbs.db
+.DS_Store
