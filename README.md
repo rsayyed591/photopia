@@ -249,9 +249,3 @@ For any questions or issues, please reach out to:
 - **GitHub:** [Rehan Sayyed](https://github.com/rsayyed591)
 
 ---
-
-Here's the updated note to include the credentials for offline use:  
-
-
-
-Including this section ensures users can quickly get started without setting up additional user accounts. Let me know if you need further edits!
