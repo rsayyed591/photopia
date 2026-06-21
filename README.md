@@ -67,12 +67,9 @@ Users can register, authenticate, upload images, and access their personal media
 
 Photopia provides a minimal and responsive interface designed to make uploading and managing photos simple across desktop and mobile devices.
 
-
-```html
 <p align="center">
    <img src="./assets/ui.png" alt="Photopia UI" width="900"/>
 </p>
-```
 
 ---
 
@@ -80,11 +77,9 @@ Photopia provides a minimal and responsive interface designed to make uploading 
 
 The project follows a traditional client-server architecture with clear separation between presentation, business logic, authentication, and data persistence.
 
-```html
 <p align="center">
-  <img src="./assests/diagram.png" alt="Photopia Architecture" width="900"/>
+  <img src="./assets/diagram.png" alt="Photopia Architecture" width="900"/>
 </p>
-```
 
 ### Architecture Overview
 
