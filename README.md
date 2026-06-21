@@ -1,249 +1,371 @@
-# Photopia 📸
+# 📸 Photopia
 
-A full-stack photo storage and sharing application built using **React**, **Node.js**, **MySQL**, and styled with **Tailwind CSS**. Photopia allows users to securely upload, store, and share their photos with a clean and modern user interface.
+[![Live Demo](https://img.shields.io/badge/Vercel-Live-success?logo=vercel)](https://photopia-one.vercel.app)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](#)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js\&logoColor=white)](#)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql\&logoColor=white)](#)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
----
+> **"Capture memories. Organize effortlessly."**
 
-## Author  
-**Rehan Feroz Sayyed**
-
----
-
-## Features  
-- User authentication (Login/Registration).
-- Secure JWT authentication.
-- Upload photos to the platform.
-- Simple, responsive UI built with Tailwind CSS.
-- Dark mode for enhanced user experience.
+Photopia is a full-stack photo storage platform that allows users to securely upload, manage, and organize personal images through a modern web interface powered by React, Express, MySQL, and JWT authentication.
 
 ---
 
-## File Structure  
+## 🌐 Live Demo
 
-```
-Photopia/
-│
-├── user-backend/                      # Backend code
-│   ├── config/                        # Database configuration
-│   │   └── db.js                      # MySQL database setup
-│   ├── controllers/                   # Backend logic for authentication and file uploads
-│   │   └── fileController.js          # Logic for handling file uploads
-│   ├── models/                        # Models for user data and file storage
-│   │   └── User.js                    # User model for authentication
-│   ├── routes/                        # API routes for user management and file uploads
-│   │   └── fileRoutes.js              # Routes for file upload functionality
-│   │   └── jwtMiddleware.js           # Middleware to protect routes with JWT authentication
-│   │   └── login.js                   # Login route
-│   │   └── register.js                # Registration route
-│   │   └── User.js                    # User API routes
-│   ├── index.js                       # Entry point for the backend
-│   ├── package.json                   # Backend dependencies and scripts
-│   └── .env                           # Environment variables for the backend
-│   └── database_setup.sql             # SQL Queries for the Database  
-│
-├── user-frontend/                     # Frontend code
-│   ├── src/                           # React source code
-│   │   ├── components/                # React components (Navbar, Footer, FileUpload, etc.)
-│   │   ├── pages/                     # Pages for Home, Login, Register, etc.
-│   │   ├── utils/                     # Helper functions (API calls)
-│   │   ├── main.jsx                   # React entry point
-│   │   ├── App.jsx                    # Main application component
-│   │   └── index.css                  # Global styles
-│   ├── tailwind.config.js             # Tailwind CSS configuration
-│   ├── package.json                   # Frontend dependencies and scripts
-│   └── vite.config.js                 # Vite configuration
-│   ├── .env                           # Environment variables for the frontend
-│   ├── index.html                     # HTML template for the frontend
-│
-├── README.md                          # Documentation for the project
-└── LICENSE                            # License file
+**Frontend:** https://photopia-one.vercel.app
 
-```
+> **Note**
+>
+> The frontend is publicly available on Vercel. Backend services are intended for local development.
 
 ---
 
-## Setup
+# 📖 About
 
-Follow these steps to run the project locally:
+Photopia is a personal full-stack project focused on secure image management.
 
-## Database Setup  
+Users can register, authenticate, upload images, and access their personal media through a clean and responsive interface. The project demonstrates secure authentication, protected API routes, file uploads, and relational database management using MySQL.
 
-To set up the database for the project, you can run the provided SQL script. This will create the necessary tables (`users` and `user_files`) for the application.
+---
 
-1. Download the [**database_setup.sql**](./user-backend/database_setup.sql) file from the repository.
-2. Connect to your MySQL database.
-3. Run the following commands in your MySQL client:
+# ✨ Features
 
-```sql
--- Create the database
-CREATE DATABASE user_auth_system;
+### 👤 Authentication
 
--- Use the database
-USE user_auth_system;
+* User Registration
+* Secure Login
+* JWT Authentication
+* Protected Routes
+* Password Management
 
--- Create the users table
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+### 📸 Media Management
 
--- Create the user_files table
-CREATE TABLE user_files (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    file_path VARCHAR(255) NOT NULL,
-    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
+* Upload Images
+* Personal Gallery
+* User-specific Storage
+* Secure File Access
+
+### 🎨 User Experience
+
+* Responsive Design
+* Clean Interface
+* Dark Mode
+* Mobile Friendly
+
+### 🔒 Security
+
+* JWT Authentication
+* Protected API Endpoints
+* Password Hashing
+* Authorization Middleware
+
+---
+
+# 🖥️ User Interface
+
+Photopia provides a minimal and responsive interface designed to make uploading and managing photos simple across desktop and mobile devices.
+
+> Replace the image below with your latest application screenshot.
+
+```html
+<p align="center">
+  <img src="./assests/ui.png" alt="Photopia UI" width="900"/>
+</p>
 ```
 
-4. After running the above SQL commands, your database schema will be set up and ready to use with the application.
+---
 
-### Backend  
+# 🏗️ System Architecture
 
-1. Navigate to the `user-backend/` directory:  
-   ```bash
-   cd user-backend
-   ```
+The project follows a traditional client-server architecture with clear separation between presentation, business logic, authentication, and data persistence.
 
-2. Install dependencies:  
-   ```bash
-   npm install
-   ```
+```html
+<p align="center">
+  <img src="./assests/diagram.png" alt="Photopia Architecture" width="900"/>
+</p>
+```
 
-3. Create a `.env` file in the `user-backend/` directory and add:  
-   ```env
-   JWT_SECRET = your-secret-jwt-token
-   DB_HOST= your-localhost (e.g., localhost)
-   DB_USER= your-database-user (e.g., root)
-   DB_PASSWORD= your-database-password
-   DB_NAME= your-database-name
-   ```
+### Architecture Overview
 
-4. Start the backend server:  
-   ```bash
-   npm start
-   ```
+```text
+Browser
+   │
+React + Vite
+(Client)
+   │
+Axios
+   │
+Express API
+   │
+JWT Middleware
+   │
+Controllers
+   │
+MySQL Database
+```
 
-### Frontend  
+### Components
 
-1. Navigate to the `user-frontend/` directory:  
-   ```bash
-   cd user-frontend
-   ```
+**Client**
 
-2. Install dependencies:  
-   ```bash
-   npm install
-   ```
+* React
+* React Router
+* Axios
+* Tailwind CSS
 
-3. Create a `.env` file in the `user-frontend/` directory and add:  
-   ```env
-   VITE_API_URL='http://localhost:5000'
-   ```
+**Backend**
 
-4. Start the frontend development server:  
-   ```bash
-   npm run dev
-   ```
+* Express.js
+* JWT Authentication
+* File Upload Controller
+* User Management
+
+**Database**
+
+* MySQL
+* Users
+* Uploaded Files
 
 ---
 
-## Technologies  
+# 🛠️ Technology Stack
 
-### Frontend  
-- **React**  
-- **Tailwind CSS**  
-- **Vite**  
-- **Axios**  
-
-### Backend  
-- **Node.js**  
-- **Express.js**  
-- **MySQL** (using Sequelize ORM)  
-- **JWT** (JSON Web Tokens for authentication)
+| Category       | Technology                |
+| -------------- | ------------------------- |
+| Frontend       | React, Vite, Tailwind CSS |
+| Backend        | Node.js, Express.js       |
+| Database       | MySQL                     |
+| Authentication | JWT                       |
+| HTTP Client    | Axios                     |
+| Deployment     | Vercel                    |
 
 ---
 
-## Usage  
+# 📂 Project Structure
 
-1. Start the backend server (refer to Setup > Backend).  
-2. Start the frontend server (refer to Setup > Frontend).  
-3. Open [http://localhost:5173](http://localhost:5173) in your browser to access the app.  
-
-### Default Credentials for Offline Use  
-For testing, offline usage, you can use the following credentials:  
-- **Email:** `admin@gmail.com`  
-- **Password:** `1234`  
-
---- 
-
-## API Endpoints  
-
-### Base URL: `http://localhost:5000/api/`
-
-| Method | Endpoint            | Description                        |  
-|--------|---------------------|------------------------------------|  
-| POST   | `/login`             | Login a user and return a JWT token |  
-| POST   | `/register`          | Register a new user               |  
-| POST   | `/change-password`   | Change Password of the user       |  
-| POST   | `/upload`            | Upload a photo                    |  
-| GET    | `/files`             | Get the files of the logged-in user |  
-
----
-
-## Screenshots  
-
-### Login Page  
-Minimalistic and user-friendly login page.  
-![Login Page](https://i.ibb.co/R4fpJXw/image.png)
-
-### Register Page  
-Easy registration form to create a new account.  
-![Register Page](https://i.ibb.co/SyhDjsC/image.png)
-
-### Home Page  
-A minimalistic UI to upload, store, and manage your photos.  
-![Home Page 1](https://i.ibb.co/1TXbykt/image.png)
-![Home Page 2](https://i.ibb.co/x8GWZkq/image.png)
+```text
+photopia/
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── database_setup.sql
+│   ├── index.js
+│   └── package.json
+│
+├── client/
+│   ├── public/
+│   │   ├── logo.png
+│   │   ├── ui.png
+│   │   └── diagram.png
+│   │
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── utils/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── LICENSE
+└── README.md
+```
 
 ---
 
-## Host  
+# 🚀 Getting Started
 
-The application is hosted on Vercel (Frontend). However, the backend is not hosted. To access the application, use the following default credentials:  
+## Prerequisites
 
-- **Email:** `admin@gmail.com`  
-- **Password:** `1234`  
-
-You can view the application [here](https://photopia-one.vercel.app/).  
+* Node.js 18+
+* MySQL Server
 
 ---
 
-## Contributing
+## Clone Repository
 
-If you want to contribute to this project, follow these steps:
+```bash
+git clone https://github.com/rsayyed591/photopia.git
+
+cd photopia
+```
+
+---
+
+## Database Setup
+
+Run the SQL script located in:
+
+```text
+backend/database_setup.sql
+```
+
+This creates the required database tables for authentication and file management.
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+
+npm install
+```
+
+Create a `.env` file.
+
+```env
+JWT_SECRET=your_secret_key
+
+DB_HOST=localhost
+
+DB_USER=root
+
+DB_PASSWORD=your_password
+
+DB_NAME=user_auth_system
+```
+
+Run the server.
+
+```bash
+npm start
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd client
+
+npm install
+```
+
+Create a `.env` file.
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+Run the development server.
+
+```bash
+npm run dev
+```
+
+---
+
+# ⚙️ Environment Variables
+
+### Backend
+
+```env
+JWT_SECRET=
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+```
+
+### Client
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+---
+
+# 🔐 API Endpoints
+
+### Authentication
+
+| Method | Endpoint               |
+| ------ | ---------------------- |
+| POST   | `/api/register`        |
+| POST   | `/api/login`           |
+| POST   | `/api/change-password` |
+
+### Files
+
+| Method | Endpoint      |
+| ------ | ------------- |
+| POST   | `/api/upload` |
+| GET    | `/api/files`  |
+
+---
+
+# 💡 Roadmap
+
+* [ ] Cloud Storage (Cloudinary / AWS S3)
+* [ ] Album Management
+* [ ] Image Search
+* [ ] Drag & Drop Uploads
+* [ ] Image Compression
+* [ ] Shareable Links
+* [ ] Profile Settings
+* [ ] Docker Support
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit (`git commit -am 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a new Pull Request.
+
+2. Create a feature branch.
+
+```bash
+git checkout -b feature/amazing-feature
+```
+
+3. Commit your changes.
+
+```bash
+git commit -m "feat: add amazing feature"
+```
+
+4. Push your changes.
+
+```bash
+git push origin feature/amazing-feature
+```
+
+5. Open a Pull Request.
 
 ---
 
-## License
+# 👨‍💻 Author
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+**Rehan Sayyed**
+
+* 🌐 Portfolio: https://iamrehan.dev
+* GitHub: https://github.com/rsayyed591
+* LinkedIn: https://linkedin.com/in/rehan42
 
 ---
 
-## Contact
+# 📄 License
 
-For any questions or issues, please reach out to:
+This project is licensed under the **MIT License**.
 
-- **Email:** rehansayyed591@gmail.com
-- **GitHub:** [Rehan Sayyed](https://github.com/rsayyed591)
+See the [LICENSE](LICENSE) file for more information.
+
+---
+
+<div align="center">
+
+### ⭐ Enjoying Photopia?
+
+If you found this project useful, consider giving it a **star**.
+
+Made with ❤️ by **Rehan Sayyed**
+
+</div>
