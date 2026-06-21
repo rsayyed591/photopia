@@ -67,11 +67,10 @@ Users can register, authenticate, upload images, and access their personal media
 
 Photopia provides a minimal and responsive interface designed to make uploading and managing photos simple across desktop and mobile devices.
 
-> Replace the image below with your latest application screenshot.
 
 ```html
 <p align="center">
-  <img src="./assests/ui.png" alt="Photopia UI" width="900"/>
+   <img src="./assets/ui.png" alt="Photopia UI" width="900"/>
 </p>
 ```
 
